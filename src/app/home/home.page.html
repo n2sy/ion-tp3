@@ -1,20 +1,59 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
+  <ion-toolbar color="primary">
+    <ion-title>Currency Rate</ion-title>
+</ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+  <ion-row>
+    <ion-col size-md="6" offset-md="3">
+
+        <ion-grid>
+          <ion-row>
+              <ion-col size="4" offset="4">
+                <ion-img src="assets/logo.png"></ion-img>
+              </ion-col>
+          </ion-row>
+        </ion-grid>
+
+        <ion-card>
+            <ion-card-header>
+                <ion-card-title>Edit Currencies</ion-card-title>
+            </ion-card-header>
+
+
+            <ion-item>
+                <ion-label position="floating">Currency 1</ion-label>
+                <ion-input disabled value="USD" type="text"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label position="floating">Currency 2</ion-label>
+                <ion-select value="TND" #c2>
+                  <ion-select-option value="EUR">EUR</ion-select-option>
+                  <ion-select-option value="GBP">GBP</ion-select-option>
+                  <ion-select-option value="JPY">JPY</ion-select-option>
+                  <ion-select-option value="CNY">CNY</ion-select-option>
+                  <ion-select-option value="TND">TND</ion-select-option>
+                  <ion-select-option value="EGP">EGP</ion-select-option>
+                </ion-select>
+                
+                <!-- <ion-input type="text" id="amount"></ion-input> -->
+            </ion-item>
+            <div class="ion-margin-vertical ion-text-center">
+            <ion-button id="btnsubmit" color="success" fill="solid" expand="block" (click)="computeRate(c2)">
+                Convert
+            </ion-button>
+            </div>
+        </ion-card>
+
+    </ion-col>
+</ion-row>
+
+<ion-row *ngIf="toConvert">
+  <ion-col class="ion-margin" size-md="6" offset-md="3">
+      <strong>Today, 1 American Dollar = {{ value }} {{ cur2 }} </strong>
+  </ion-col>
+</ion-row>
+
 </ion-content>
